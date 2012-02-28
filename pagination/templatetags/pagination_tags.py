@@ -13,6 +13,7 @@ register = template.Library()
 DEFAULT_PAGINATION = getattr(settings, 'PAGINATION_DEFAULT_PAGINATION', 20)
 DEFAULT_WINDOW = getattr(settings, 'PAGINATION_DEFAULT_WINDOW', 4)
 DEFAULT_ORPHANS = getattr(settings, 'PAGINATION_DEFAULT_ORPHANS', 0)
+DEFAULT_FORMAT = getattr(settings, 'PAGINATION_DEFAULT_FORMAT', 'normal')
 INVALID_PAGE_RAISES_404 = getattr(settings,
     'PAGINATION_INVALID_PAGE_RAISES_404', False)
 
@@ -209,6 +210,7 @@ def paginate(context, window=DEFAULT_WINDOW, hashtag=''):
             'pages': pages,
             'records': records,
             'page_obj': page_obj,
+            'format': DEFAULT_FORMAT,
             'paginator': paginator,
             'hashtag': hashtag,
             'is_paginated': paginator.count > paginator.per_page,
